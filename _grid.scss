@@ -137,15 +137,15 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
         width: 100% !important;
     }
 
-    .#{$namespace}.grid--gutter {
+    .#{$namespace}.#{$fallback-grid-namespace}--gutter {
         margin-left: 0;
     }
 
-    .#{$namespace}.grid--gutter > .grid__row > .grid__cell {
+    .#{$namespace}.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
         padding-left: 0;
     }
 
-    .#{$namespace}--reversed {
+    .#{$namespace}.#{$fallback-grid-namespace}--reversed {
         direction: ltr;
     }
 }
