@@ -17,8 +17,12 @@ $fallback-grid-line-height: 20px !default;
 .#{$fallback-grid-namespace} {
     margin-bottom: $fallback-grid-line-height;
     margin-bottom: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
+/* No margin for nested grids */
 .#{$fallback-grid-namespace} .#{$fallback-grid-namespace} {
     margin-bottom: 0;
 }
@@ -27,6 +31,8 @@ $fallback-grid-line-height: 20px !default;
 
 /* -- Basic table layout settings: -------------------------------------------------------------- */
 .#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row {
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 100%;
     display: table;
