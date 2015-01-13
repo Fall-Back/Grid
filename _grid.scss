@@ -153,27 +153,27 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
 
 // /* Palm - no grid  */
 @media only screen and (max-width: 480px) {
-    @include no-fallback-grid('palm-no-' + #{$fallback-grid-namespace});
+    @include no-fallback-grid('palm-no-' + $fallback-grid-namespace);
 }
 
 // /* Lap grid & no grid */
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-    @include no-fallback-grid('lap-no-' + #{$fallback-grid-namespace});
+    @include no-fallback-grid('lap-no-' + $fallback-grid-namespace);
 }
 
 // /* Lap-and-up grid & no grid */
 @media only screen and (min-width: 481px) {
-    @include no-fallback-grid('lap-and-up-no-' + #{$fallback-grid-namespace});
+    @include no-fallback-grid('lap-and-up-no-' + $fallback-grid-namespace);
 }
 
 // /* Portable grid & no grid */
 @media only screen and (max-width: 1023px) {
-    @include no-fallback-grid('portable-no-' + #{$fallback-grid-namespace});
+    @include no-fallback-grid('portable-no-' + $fallback-grid-namespace);
 }
 
 // /* Desk grid & no grid */
 @media only screen and (min-width: 1024px) {
-    @include no-fallback-grid('desk-no-' + #{$fallback-grid-namespace});
+    @include no-fallback-grid('desk-no-' + $fallback-grid-namespace);
 }
 
 
