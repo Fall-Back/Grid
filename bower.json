@@ -1,17 +1,17 @@
 {
-    "name": "fallback-svg",
+    "name": "fallback-grid",
     "version": "0.0.1",
-    "homepage": "https://github.com/Fall-Back/SVG",
+    "homepage": "https://github.com/Fall-Back/Grid",
     "authors": [
         "Andy Kirk <andy.kirk@gridlight-design.co.uk>"
     ],
-    "description": "A pattern to include SVG's in the best possible way without penalising any particular user group.",
-    "main": "_svg.scss",
+    "description": "Grid using display:table to produce responsive, equal height grid cells with a fallback for older browsers.",
+    "main": "_grid.scss",
     "keywords": [
         "fallback",
         "fallbacks",
         "css",
-        "svg"
+        "grid"
     ],
     "license": "Apache"
 }
