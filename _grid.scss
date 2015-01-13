@@ -1,0 +1,195 @@
+/*
+    Note that the gutter measurement will become a variable.
+
+    Can't seem to do much about IE 9 & 10 having full-height decoration so resorted to JS.
+*/
+
+$fallback-grid-namespace:   grid !default;
+
+$fallback-grid-font-size:   10px !default;
+$fallback-grid-line-height: 20px !default;
+
+
+
+/* -- RE-GRID - using namespace: #{$fallback-grid-namespace} ------------------------------------ */
+
+/* -- Set bottom margin for outer grid only: ---------------------------------------------------- */
+.#{$fallback-grid-namespace} {
+    margin-bottom: $fallback-grid-line-height;
+    margin-bottom: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+}
+
+.#{$fallback-grid-namespace} .#{$fallback-grid-namespace} {
+    margin-bottom: 0;
+}
+/* ---------------------------------------------------------------------------------------------- */
+
+
+/* -- Basic table layout settings: -------------------------------------------------------------- */
+.#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row {
+    width: 100%;
+    height: 100%;
+    display: table;
+    table-layout: fixed;
+}
+
+.#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    // Settings necessary to correctly display inner pseudo-based decoration:
+    position: relative;
+    z-index: 0;
+    height: 100%;
+}
+/* ---------------------------------------------------------------------------------------------- */
+
+
+/* -- Grid gutter settings: --------------------------------------------------------------------- */
+// Add horizontal gutter to all cells:
+.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+    padding-left: $fallback-grid-line-height;
+    padding-left: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+}
+
+// Cancel out first cell gutter:
+.#{$fallback-grid-namespace}--gutter {
+    margin-left: -$fallback-grid-line-height;
+    margin-left: -($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+}
+
+// Add vertical gutter to all rows and cells but the first:
+.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row + .#{$fallback-grid-namespace}__row,
+.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell + .#{$fallback-grid-namespace}__cell {
+    margin-top: $fallback-grid-line-height;
+    margin-top: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+}
+/* ---------------------------------------------------------------------------------------------- */
+
+
+/* -- Reversed grid settings: ------------------------------------------------------------------- */
+.#{$fallback-grid-namespace}--reversed {
+    direction: rtl;
+}
+
+.#{$fallback-grid-namespace}--reversed > .#{$fallback-grid-namespace}__cell {
+    direction: ltr;
+}
+/* ---------------------------------------------------------------------------------------------- */
+
+
+/* -- Full height helper: ----------------------------------------------------------------------- */
+.#{$fallback-grid-namespace}__fill {
+    display: block;
+    height: 100%;
+    padding: $fallback-grid-line-height;
+    padding: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+}
+
+/* IE 11 hack to fix 100% height: */
+_:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+    height: 1px;
+}
+
+/*
+    Webkit/Blink messes up any padding applied with border-box, so set back to content-box:
+    Chrome *, Safari *, Opera = 14, Android *
+    http://browserhacks.com/#hack-f4ade0540d8e891e8190065f75acb186
+    Doesn't seem to apply in Safari 5 (having tried using -webkit, of course)
+*/
+.#{$fallback-grid-namespace}__fill:not(*:root) {
+    -webkit-box-sizing: content-box;
+}
+
+/* Reset box-sizing for pseudo-elements: */
+.#{$fallback-grid-namespace}__fill:not(*:root):before,
+.#{$fallback-grid-namespace}__fill:not(*:root):after {
+    -webkit-box-sizing: border-box;
+}
+
+/*
+    Same as above for old Opera (<= 11)
+    http://browserhacks.com/#hack-da316470409d77b36c0d01785685f40c
+*/
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
+    .#{$fallback-grid-namespace}__fill {
+        box-sizing: content-box;
+    }
+    .#{$fallback-grid-namespace}__fill:before,
+    .#{$fallback-grid-namespace}__fill:after {
+        box-sizing: border-box;
+    }
+}
+
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
+// Mixin to responsively turn off the grid:
+@mixin no-fallback-grid($namespace:"") {
+    /* Turn off grid settings for #{$namespace}: */
+
+    .#{$namespace} > .#{$fallback-grid-namespace}__row,
+    .#{$namespace} > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+        display: block;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    .#{$namespace}.grid--gutter {
+        margin-left: 0;
+    }
+
+    .#{$namespace}.grid--gutter > .grid__row > .grid__cell {
+        padding-left: 0;
+    }
+
+    .#{$namespace}--reversed {
+        direction: ltr;
+    }
+}
+
+
+// /* Palm - no grid  */
+@media only screen and (max-width: 480px) {
+    @include no-fallback-grid('palm-no-grid');
+}
+
+// /* Lap grid & no grid */
+@media only screen and (min-width: 481px) and (max-width: 1023px) {
+    @include no-fallback-grid('lap-no-grid');
+}
+
+// /* Lap-and-up grid & no grid */
+@media only screen and (min-width: 481px) {
+    @include no-fallback-grid('lap-and-up-no-grid');
+}
+
+// /* Portable grid & no grid */
+@media only screen and (max-width: 1023px) {
+    @include no-fallback-grid('portable-no-grid');
+}
+
+// /* Desk grid & no grid */
+@media only screen and (min-width: 1024px) {
+    @include no-fallback-grid('desk-no-grid');
+}
+
+
+
+/* -- Fallbacks: Un-grid everything for older browsers: ----------------------------------------- */
+
+/* Old IE (7-) fallback */
+@media screen\9 {
+    @include no-fallback-grid($fallback-grid-namespace);
+
+    .grid__row .grid__cell {
+        width: 100% !important;
+    }
+}
+
+/* -- Fallback for print styles: -----------------------------------------------------------------*/
+@media print {
+    @include no-fallback-grid($fallback-grid-namespace);
+}
