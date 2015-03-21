@@ -11,7 +11,7 @@ $fallback-grid-line-height: 20px !default;
 
 
 
-/* -- RE-GRID - using namespace: #{$fallback-grid-namespace} ------------------------------------ */
+/* -- FALLBACK-GRID - using namespace: #{$fallback-grid-namespace} ------------------------------------ */
 
 /* -- Set bottom margin for outer grid only: ---------------------------------------------------- */
 .#{$fallback-grid-namespace} {
