@@ -4,33 +4,33 @@
     Can't seem to do much about IE 9 & 10 having full-height decoration so resorted to JS.
 */
 
-$fallback-grid-namespace:   grid !default;
+$fallback--grid--namespace:   grid !default;
 
-$fallback-grid-font-size:   10px !default;
-$fallback-grid-line-height: 20px !default;
+$fallback--grid--font-size:   10px !default;
+$fallback--grid--line-height: 20px !default;
 
 
 
-/* -- FALLBACK-GRID - using namespace: #{$fallback-grid-namespace} ------------------------------------ */
+/* -- FALLBACK-GRID - using namespace: #{$fallback--grid--namespace} ------------------------------------ */
 
 /* -- Set bottom margin for outer grid only: ---------------------------------------------------- */
-.#{$fallback-grid-namespace} {
-    margin-bottom: $fallback-grid-line-height;
-    margin-bottom: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+.#{$fallback--grid--namespace} {
+    margin-bottom: $fallback--grid--line-height;
+    margin-bottom: ($fallback--grid--line-height / $fallback--grid--font-size) * 1rem;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
 }
 
 /* No margin for nested grids */
-.#{$fallback-grid-namespace} .#{$fallback-grid-namespace} {
+.#{$fallback--grid--namespace} .#{$fallback--grid--namespace} {
     margin-bottom: 0;
 }
 /* ---------------------------------------------------------------------------------------------- */
 
 
 /* -- Basic table layout settings: -------------------------------------------------------------- */
-.#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row {
+.#{$fallback--grid--namespace} > .#{$fallback--grid--namespace}__row {
     padding: 0;
     margin: 0;
     width: 100%;
@@ -39,7 +39,7 @@ $fallback-grid-line-height: 20px !default;
     table-layout: fixed;
 }
 
-.#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+.#{$fallback--grid--namespace} > .#{$fallback--grid--namespace}__row > .#{$fallback--grid--namespace}__cell {
     display: table-cell;
     vertical-align: top;
     padding: 0;
@@ -54,47 +54,47 @@ $fallback-grid-line-height: 20px !default;
 
 /* -- Grid gutter settings: --------------------------------------------------------------------- */
 // Add horizontal gutter to all cells:
-.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
-    padding-left: $fallback-grid-line-height;
-    padding-left: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+.#{$fallback--grid--namespace}--gutter > .#{$fallback--grid--namespace}__row > .#{$fallback--grid--namespace}__cell {
+    padding-left: $fallback--grid--line-height;
+    padding-left: ($fallback--grid--line-height / $fallback--grid--font-size) * 1rem;
 }
 
 // Cancel out first cell gutter:
-.#{$fallback-grid-namespace}--gutter {
-    margin-left: -$fallback-grid-line-height;
-    margin-left: -($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+.#{$fallback--grid--namespace}--gutter {
+    margin-left: -$fallback--grid--line-height;
+    margin-left: -($fallback--grid--line-height / $fallback--grid--font-size) * 1rem;
 }
 
 // Add vertical gutter to all rows and cells but the first:
-.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row + .#{$fallback-grid-namespace}__row,
-.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell + .#{$fallback-grid-namespace}__cell {
-    margin-top: $fallback-grid-line-height;
-    margin-top: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+.#{$fallback--grid--namespace}--gutter > .#{$fallback--grid--namespace}__row + .#{$fallback--grid--namespace}__row,
+.#{$fallback--grid--namespace}--gutter > .#{$fallback--grid--namespace}__row > .#{$fallback--grid--namespace}__cell + .#{$fallback--grid--namespace}__cell {
+    margin-top: $fallback--grid--line-height;
+    margin-top: ($fallback--grid--line-height / $fallback--grid--font-size) * 1rem;
 }
 /* ---------------------------------------------------------------------------------------------- */
 
 
 /* -- Reversed grid settings: ------------------------------------------------------------------- */
-.#{$fallback-grid-namespace}--reversed {
+.#{$fallback--grid--namespace}--reversed {
     direction: rtl;
 }
 
-.#{$fallback-grid-namespace}--reversed > .#{$fallback-grid-namespace}__cell {
+.#{$fallback--grid--namespace}--reversed > .#{$fallback--grid--namespace}__cell {
     direction: ltr;
 }
 /* ---------------------------------------------------------------------------------------------- */
 
 
 /* -- Full height helper: ----------------------------------------------------------------------- */
-.#{$fallback-grid-namespace}__fill {
+.#{$fallback--grid--namespace}__fill {
     display: block;
     height: 100%;
-    padding: $fallback-grid-line-height;
-    padding: ($fallback-grid-line-height / $fallback-grid-font-size) * 1rem;
+    padding: $fallback--grid--line-height;
+    padding: ($fallback--grid--line-height / $fallback--grid--font-size) * 1rem;
 }
 
 /* IE 11 hack to fix 100% height: */
-_:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+_:-ms-fullscreen, :root .#{$fallback--grid--namespace} > .#{$fallback--grid--namespace}__row > .#{$fallback--grid--namespace}__cell {
     height: 1px;
 }
 
@@ -104,13 +104,13 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
     http://browserhacks.com/#hack-f4ade0540d8e891e8190065f75acb186
     Doesn't seem to apply in Safari 5 (having tried using -webkit, of course)
 */
-.#{$fallback-grid-namespace}__fill:not(*:root) {
+.#{$fallback--grid--namespace}__fill:not(*:root) {
     -webkit-box-sizing: content-box;
 }
 
 /* Reset box-sizing for pseudo-elements: */
-.#{$fallback-grid-namespace}__fill:not(*:root):before,
-.#{$fallback-grid-namespace}__fill:not(*:root):after {
+.#{$fallback--grid--namespace}__fill:not(*:root):before,
+.#{$fallback--grid--namespace}__fill:not(*:root):after {
     -webkit-box-sizing: border-box;
 }
 
@@ -119,11 +119,11 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
     http://browserhacks.com/#hack-da316470409d77b36c0d01785685f40c
 */
 @media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) {
-    .#{$fallback-grid-namespace}__fill {
+    .#{$fallback--grid--namespace}__fill {
         box-sizing: content-box;
     }
-    .#{$fallback-grid-namespace}__fill:before,
-    .#{$fallback-grid-namespace}__fill:after {
+    .#{$fallback--grid--namespace}__fill:before,
+    .#{$fallback--grid--namespace}__fill:after {
         box-sizing: border-box;
     }
 }
@@ -136,22 +136,22 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
 @mixin no-fallback-grid($namespace:"") {
     /* Turn off grid settings for #{$namespace}: */
 
-    .#{$namespace} > .#{$fallback-grid-namespace}__row,
-    .#{$namespace} > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+    .#{$namespace} > .#{$fallback--grid--namespace}__row,
+    .#{$namespace} > .#{$fallback--grid--namespace}__row > .#{$fallback--grid--namespace}__cell {
         display: block;
         height: auto !important;
         width: 100% !important;
     }
 
-    .#{$namespace}.#{$fallback-grid-namespace}--gutter {
+    .#{$namespace}.#{$fallback--grid--namespace}--gutter {
         margin-left: 0;
     }
 
-    .#{$namespace}.#{$fallback-grid-namespace}--gutter > .#{$fallback-grid-namespace}__row > .#{$fallback-grid-namespace}__cell {
+    .#{$namespace}.#{$fallback--grid--namespace}--gutter > .#{$fallback--grid--namespace}__row > .#{$fallback--grid--namespace}__cell {
         padding-left: 0;
     }
 
-    .#{$namespace}.#{$fallback-grid-namespace}--reversed {
+    .#{$namespace}.#{$fallback--grid--namespace}--reversed {
         direction: ltr;
     }
 }
@@ -159,27 +159,27 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
 
 // /* Palm - no grid  */
 @media only screen and (max-width: 480px) {
-    @include no-fallback-grid('palm-no-' + $fallback-grid-namespace);
+    @include no-fallback-grid('palm-no-' + $fallback--grid--namespace);
 }
 
 // /* Lap grid & no grid */
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-    @include no-fallback-grid('lap-no-' + $fallback-grid-namespace);
+    @include no-fallback-grid('lap-no-' + $fallback--grid--namespace);
 }
 
 // /* Lap-and-up grid & no grid */
 @media only screen and (min-width: 481px) {
-    @include no-fallback-grid('lap-and-up-no-' + $fallback-grid-namespace);
+    @include no-fallback-grid('lap-and-up-no-' + $fallback--grid--namespace);
 }
 
 // /* Portable grid & no grid */
 @media only screen and (max-width: 1023px) {
-    @include no-fallback-grid('portable-no-' + $fallback-grid-namespace);
+    @include no-fallback-grid('portable-no-' + $fallback--grid--namespace);
 }
 
 // /* Desk grid & no grid */
 @media only screen and (min-width: 1024px) {
-    @include no-fallback-grid('desk-no-' + $fallback-grid-namespace);
+    @include no-fallback-grid('desk-no-' + $fallback--grid--namespace);
 }
 
 
@@ -188,7 +188,7 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
 
 /* Old IE (7-) fallback */
 @media screen\9 {
-    @include no-fallback-grid($fallback-grid-namespace);
+    @include no-fallback-grid($fallback--grid--namespace);
 
     .grid__row .grid__cell {
         width: 100% !important;
@@ -197,5 +197,5 @@ _:-ms-fullscreen, :root .#{$fallback-grid-namespace} > .#{$fallback-grid-namespa
 
 /* -- Fallback for print styles: -----------------------------------------------------------------*/
 @media print {
-    @include no-fallback-grid($fallback-grid-namespace);
+    @include no-fallback-grid($fallback--grid--namespace);
 }
