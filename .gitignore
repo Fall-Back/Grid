@@ -2,3 +2,4 @@
 bower_components/
 grid.css
 grid.scss
+js/*.min.js
