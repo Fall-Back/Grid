@@ -7,9 +7,9 @@
     ],
     "description": "Grid using display:table to produce responsive, equal height grid cells with a fallback for older browsers.",
     "main": "_grid.scss",
+    "ignore":[],
     "keywords": [
         "fallback",
-        "fallbacks",
         "css",
         "grid"
     ],
