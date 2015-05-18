@@ -184,7 +184,7 @@ _:-ms-fullscreen, :root .#{$fallback--grid--namespace} > .#{$fallback--grid--nam
 
 
 
-/* -- Fallbacks: Un-grid everything for older browsers: ----------------------------------------- */
+/* -- FallBacks: Un-grid everything for older browsers: ----------------------------------------- */
 
 /* Old IE (7-) fallback */
 @media screen\9 {
@@ -195,7 +195,7 @@ _:-ms-fullscreen, :root .#{$fallback--grid--namespace} > .#{$fallback--grid--nam
     }
 }
 
-/* -- Fallback for print styles: -----------------------------------------------------------------*/
+/* -- FallBack for print styles: -----------------------------------------------------------------*/
 @media print {
     @include no-fallback-grid($fallback--grid--namespace);
 }
